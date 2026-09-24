@@ -5,6 +5,7 @@ import path from "path";
 const app = express();
 console.log(__dirname);
 app.use(express.static(path.join(__dirname, "public")));
+console.log(__dirname);
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
