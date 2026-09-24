@@ -8,6 +8,8 @@ mongoose
   .then((data) => {
     console.log("mongoDb succeed");
     const PORT = process.env.PORT ?? 3003;
-    console.log(`The server in succedfully on port:${PORT}`);
+    app.listen(PORT, function () {
+      console.log(`The server in succedfully on port:${PORT}`);
+    });
   })
   .catch((err) => console.log(`ERROR:`, err));
