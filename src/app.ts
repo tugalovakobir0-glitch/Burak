@@ -1,6 +1,7 @@
 import express from "express";
 import path from "path";
 import router from "./router";
+import routerAdmin from "./routerAdmin";
 
 /** 1- ENTRANCE- kirish qismi **/
 const app = express();
@@ -15,6 +16,8 @@ app.use(express.json());
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
 /** 1- ROUTERS- ruterlar qismi **/
-app.use("/", router);
+
+app.use("/admin", routerAdmin); //Bssr-Ejs
+app.use("/", router); //React
 
 export default app;
