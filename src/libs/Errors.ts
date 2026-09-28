@@ -26,3 +26,4 @@ class Errors extends Error {
     this.message = statusMessage;
   }
 }
+export default Errors;
