@@ -1,8 +1,9 @@
 import express, { Request, Response } from "express";
 import { T } from "../libs/types/common";
 import MemberService from "../models/MemberService";
-import { MemberInput } from "../libs/types/member";
+import { LoginInput, MemberInput } from "../libs/types/member";
 import { MemberType } from "../libs/enums/member.enum";
+import { log } from "console";
 
 const restaurantController: T = {};
 
@@ -30,10 +31,14 @@ restaurantController.getSignup = (req: Request, res: Response) => {
     console.log("Error Signup Page:", err);
   }
 };
-restaurantController.processLogin = (req: Request, res: Response) => {
+restaurantController.processLogin = async (req: Request, res: Response) => {
   try {
     console.log("Postprocess");
-    res.send("DONE");
+    console.log("body:", req.body);
+    const input: LoginInput = req.body;
+    const memberService = new MemberService();
+    const result = await memberService.processLogin(input);
+    res.send(result);
   } catch (err) {
     console.log("Error Postprocess:", err);
   }
