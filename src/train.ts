@@ -1,13 +1,21 @@
-//MITASK-O:
-function yigindi(qiymat: any[]) {
-  let qushulivchi = 0;
-  for (let i = 0; qiymat.length > i; i++) {
-    if (typeof qiymat[i] === "number") qushulivchi += qiymat[i];
-  }
-  return qushulivchi;
+//MitTask-P:
+function string(obj: any) {
+  const result = Object.entries(obj);
+  return result;
 }
 
-console.log(yigindi([2, 5, 6, "6", { a: 10 }, true]));
+console.log(string({ a: 10, b: 30, c: 40 }));
+
+// //MITASK-O:
+// function yigindi(qiymat: any[]) {
+//   let qushulivchi = 0;
+//   for (let i = 0; qiymat.length > i; i++) {
+//     if (typeof qiymat[i] === "number") qushulivchi += qiymat[i];
+//   }
+//   return qushulivchi;
+// }
+
+// console.log(yigindi([2, 5, 6, "6", { a: 10 }, true]));
 
 /** Project Standarts:
  - Login Standarts:
