@@ -41,6 +41,7 @@ restaurantController.processLogin = async (req: Request, res: Response) => {
     res.send(result);
   } catch (err) {
     console.log("Error Postprocess:", err);
+    res.send(err);
   }
 };
 restaurantController.processSignup = async (req: Request, res: Response) => {
