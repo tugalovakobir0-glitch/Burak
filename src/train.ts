@@ -1,10 +1,27 @@
-//MitTask-P:
-function string(obj: any) {
-  const result = Object.entries(obj);
-  return result;
-}
+//MITASK-Q masala sharti:// Shunday function yozing, u 2 ta parametrga ega bo'lib
+// birinchisi object, ikkinchisi string bo'lsin.
+// Agar qabul qilinayotgan ikkinchi string, objectning
+// biror bir propertysiga mos kelsa, 'true', aks holda mos kelmasa 'false' qaytarsin.
 
-console.log(string({ a: 10, b: 30, c: 40 }));
+function string(obj: any, qiymat: string) {
+  const result = Object.keys(obj);
+  if (result.includes(qiymat)) {
+    return true;
+  } else {
+    return false;
+  }
+}
+console.log(string({ a: 10, b: 20 }, "a"));
+console.log("==============");
+console.log(string({ a: 10, b: 20 }, "d"));
+
+//MitTask-P:
+// function string(obj: any) {
+//   const result = Object.entries(obj);
+//   return result;
+// }
+
+// console.log(string({ a: 10, b: 30, c: 40 }));
 
 // //MITASK-O:
 // function yigindi(qiymat: any[]) {
