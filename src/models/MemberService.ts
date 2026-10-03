@@ -20,10 +20,12 @@ class MemberService {
       result.memberPassword = "";
       return result.toJSON();
     } catch (err) {
+      console.error("Error ,model:signup", err);
       throw new Errors(HttpCode.BAD_REQUEST, Message.USED_NICK_PHONE);
     }
   }
   public async login(input: LoginInput): Promise<Member> {
+    // TODO: Consider member status later
     const member = await this.memberModel
       .findOne(
         { memberNick: input.memberNick },
