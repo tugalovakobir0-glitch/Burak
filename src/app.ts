@@ -5,6 +5,14 @@ import routerAdmin from "./routerAdmin";
 import morgan from "morgan";
 import { MORGAN_FORMAT } from "./libs/config";
 
+import session from "express-session";
+import ConnectMongoDBSession from "connect-mongodb-session";
+const MongoDbStore = ConnectMongoDBSession(session);
+const store = new MongoDbStore({
+  uri: String(process.env.MONGO_URL),
+  collection: "sessions",
+});
+
 /** 1- ENTRANCE- kirish qismi **/
 const app = express();
 console.log(__dirname);
@@ -13,13 +21,6 @@ console.log(__dirname);
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(morgan(MORGAN_FORMAT));
-import session from "express-session";
-import ConnectMongoDBSession from "connect-mongodb-session";
-const MongoDbStore = ConnectMongoDBSession(session);
-const store = new MongoDbStore({
-  uri: String(process.env.MONGO_URL),
-  collection: "sessions",
-});
 
 /** SESSIONS- sekshinlar qismi **/
 app.use(
