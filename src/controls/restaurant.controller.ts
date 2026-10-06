@@ -1,7 +1,7 @@
 import express, { Request, Response } from "express";
 import { T } from "../libs/types/common";
 import MemberService from "../models/MemberService";
-import { LoginInput, MemberInput } from "../libs/types/member";
+import { AdminRequest, LoginInput, MemberInput } from "../libs/types/member";
 import { MemberType } from "../libs/enums/member.enum";
 
 const memberService = new MemberService();
@@ -31,19 +31,10 @@ restaurantController.getSignup = (req: Request, res: Response) => {
     console.log("Error Signup Page:", err);
   }
 };
-restaurantController.processLogin = async (req: Request, res: Response) => {
-  try {
-    console.log("Postprocess");
-    console.log("body:", req.body);
-    const input: LoginInput = req.body,
-      result = await memberService.processLogin(input);
-    res.send(result);
-  } catch (err) {
-    console.log("Error Postprocess:", err);
-    res.send(err);
-  }
-};
-restaurantController.processSignup = async (req: Request, res: Response) => {
+restaurantController.processSignup = async (
+  req: AdminRequest,
+  res: Response,
+) => {
   try {
     console.log("PostprocessSignup");
     console.log("body:", req.body);
@@ -52,9 +43,32 @@ restaurantController.processSignup = async (req: Request, res: Response) => {
     newMember.memberType = MemberType.RESTAURANT;
     const result = await memberService.processSignup(newMember);
 
-    res.send(result);
+    req.session.member = result;
+    req.session.save(function () {
+      res.send(result);
+    });
   } catch (err) {
     console.log("Error PostprocessSignup:", err);
+    res.send(err);
+  }
+};
+
+restaurantController.processLogin = async (
+  req: AdminRequest,
+  res: Response,
+) => {
+  try {
+    console.log("Postprocess");
+    console.log("body:", req.body);
+    const input: LoginInput = req.body,
+      result = await memberService.processLogin(input);
+
+    req.session.member = result;
+    req.session.save(function () {
+      res.send(result);
+    });
+  } catch (err) {
+    console.log("Error Postprocess:", err);
     res.send(err);
   }
 };
