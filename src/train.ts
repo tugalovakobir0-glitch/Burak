@@ -1,20 +1,35 @@
+//TASK R:
+//Shunday function yozing, u string parametrga ega bo'lsin.
+// Agar argument sifatida berilayotgan string, "1 + 2" bo'lsa,
+// string ichidagi sonlarin yig'indisni hisoblab, number holatida qaytarsin
+//Masalani yichilishi:
+function string(a: string) {
+  const result = a.split("+");
+  const b = Number(result[0]);
+  const c = Number(result[1]);
+
+  return b + c;
+}
+
+console.log(string("3+7"));
+
 //MITASK-Q masala sharti:// Shunday function yozing, u 2 ta parametrga ega bo'lib
 // birinchisi object, ikkinchisi string bo'lsin.
 // Agar qabul qilinayotgan ikkinchi string, objectning
 // biror bir propertysiga mos kelsa, 'true', aks holda mos kelmasa 'false' qaytarsin.
 
-function string(obj: any, qiymat: string) {
-  const result = Object.keys(obj);
-  console.log(result);
-  if (result.includes(qiymat)) {
-    return true;
-  } else {
-    return false;
-  }
-}
-console.log(string({ a: 10, b: 20 }, "a"));
-console.log("==============");
-console.log(string({ a: 10, b: 20 }, "d"));
+// function string(obj: any, qiymat: string) {
+//   const result = Object.keys(obj);
+//   console.log(result);
+//   if (result.includes(qiymat)) {
+//     return true;
+//   } else {
+//     return false;
+//   }
+// }
+// console.log(string({ a: 10, b: 20 }, "a"));
+// console.log("==============");
+// console.log(string({ a: 10, b: 20 }, "d"));
 
 //MitTask-P:
 // function string(obj: any) {
