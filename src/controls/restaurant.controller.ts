@@ -3,7 +3,7 @@ import { T } from "../libs/types/common";
 import MemberService from "../models/MemberService";
 import { AdminRequest, LoginInput, MemberInput } from "../libs/types/member";
 import { MemberType } from "../libs/enums/member.enum";
-import { Message } from "../libs/Errors";
+import Errors, { Message } from "../libs/Errors";
 
 const memberService = new MemberService();
 const restaurantController: T = {};
@@ -14,6 +14,7 @@ restaurantController.goHome = (req: Request, res: Response) => {
     res.render("home");
   } catch (err) {
     console.log("Error Home Page:", err);
+    res.redirect("/admin");
   }
 };
 restaurantController.getLogin = (req: Request, res: Response) => {
@@ -22,6 +23,7 @@ restaurantController.getLogin = (req: Request, res: Response) => {
     res.render("login");
   } catch (err) {
     console.log("Error Login Page:", err);
+    res.redirect("/admin");
   }
 };
 restaurantController.getSignup = (req: Request, res: Response) => {
@@ -30,6 +32,7 @@ restaurantController.getSignup = (req: Request, res: Response) => {
     res.render("signup");
   } catch (err) {
     console.log("Error Signup Page:", err);
+    res.redirect("/admin");
   }
 };
 restaurantController.processSignup = async (
@@ -50,7 +53,11 @@ restaurantController.processSignup = async (
     });
   } catch (err) {
     console.log("Error PostprocessSignup:", err);
-    res.send(err);
+    const message =
+      err instanceof Errors ? err.message : Message.SOMETHING_WENT_WRONG;
+    res.send(
+      `<script>alert("${message}"); window.location.replace('admin/signup')</script>`,
+    );
   }
 };
 
@@ -70,7 +77,11 @@ restaurantController.processLogin = async (
     });
   } catch (err) {
     console.log("Error Postprocess:", err);
-    res.send(err);
+    const message =
+      err instanceof Errors ? err.message : Message.SOMETHING_WENT_WRONG;
+    res.send(
+      `<script>alert("${message}"); window.location.replace('admin/login')</script>`,
+    );
   }
 };
 restaurantController.checkAuthSession = async (
@@ -82,7 +93,17 @@ restaurantController.checkAuthSession = async (
     console.log("body:", req.body);
     if (req.session?.member)
       res.send(`<script>alert(${req.session.member.memberNick})</script>`);
-    else res.send(`<script>alert(${"Message.NOT_AUTHENTICATED"})</script>`);
+    else res.send(`<script>alert(${Message.NOT_AUTHENTICATED})</script>`);
+  } catch (err) {
+    console.log("Error Postprocess:", err);
+    res.send(err);
+  }
+};
+restaurantController.logout = async (req: AdminRequest, res: Response) => {
+  try {
+    req.session.destroy(function () {
+      res.redirect("/admin");
+    });
   } catch (err) {
     console.log("Error Postprocess:", err);
     res.send(err);
