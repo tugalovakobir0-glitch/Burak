@@ -3,6 +3,7 @@ import { T } from "../libs/types/common";
 import MemberService from "../models/MemberService";
 import { LoginInput, MemberInput } from "../libs/types/member";
 import { MemberType } from "../libs/enums/member.enum";
+
 const memberService = new MemberService();
 const restaurantController: T = {};
 

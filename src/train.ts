@@ -5,6 +5,7 @@
 
 function string(obj: any, qiymat: string) {
   const result = Object.keys(obj);
+  console.log(result);
   if (result.includes(qiymat)) {
     return true;
   } else {
