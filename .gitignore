@@ -2,3 +2,5 @@ node_modules
 dist
 .env
 uploads
+.DS_Store
+*.dmg
