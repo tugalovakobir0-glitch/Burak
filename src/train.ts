@@ -1,17 +1,46 @@
+//MITASK- S:
+//Shunday function yozing, u numberlardan tashkil topgan array qabul qilsin va osha numberlar orasidagi tushib qolgan sonni topib uni return qilsin
+console.log("birinchi  usul bunda hamma tushib qogan sonni topadi:");
+function birinchi(a: any) {
+  a.sort();
+  const result = [];
+
+  for (let i = 1; i <= 9; i++) {
+    if (!a.includes(i)) {
+      result.push(i);
+    }
+  }
+  return result;
+}
+
+console.log(birinchi([9, 7, 6, 3, 4, 0]));
+console.log("=============");
+
+console.log("ikkinchi usul bunda bitta tushib qogan sonni topadi:");
+function ikkinchi(a: any) {
+  for (let i = 1; i <= 9; i++) {
+    if (!a.includes(i)) {
+      return i;
+    }
+  }
+}
+
+console.log(ikkinchi([1, 2, 3, 4, 5, 7]));
+
 //TASK R:
 //Shunday function yozing, u string parametrga ega bo'lsin.
 // Agar argument sifatida berilayotgan string, "1 + 2" bo'lsa,
 // string ichidagi sonlarin yig'indisni hisoblab, number holatida qaytarsin
 //Masalani yichilishi:
-function string(a: string) {
-  const result = a.split("+");
-  const b = Number(result[0]);
-  const c = Number(result[1]);
+// function string(a: string) {
+//   const result = a.split("+");
+//   const b = Number(result[0]);
+//   const c = Number(result[1]);
 
-  return b + c;
-}
+//   return b + c;
+// }
 
-console.log(string("3+7"));
+// console.log(string("3+7"));
 
 //MITASK-Q masala sharti:// Shunday function yozing, u 2 ta parametrga ega bo'lib
 // birinchisi object, ikkinchisi string bo'lsin.
