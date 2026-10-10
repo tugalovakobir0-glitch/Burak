@@ -1,31 +1,43 @@
+//MITASK-T:
+//Shunday function tuzing, u sonlardan tashkil topgan 2'ta array qabul qilsin.
+//Va ikkala arraydagi sonlarni tartiblab bir arrayda qaytarsin.
+
+function arrayfunction(a: any, b: any) {
+  const result = a.concat(b);
+  const result1 = result.sort();
+  return result1;
+}
+
+console.log(arrayfunction([5, 3, 4, 2, 1, 0], [9, 7, 6, 8]));
+
 //MITASK- S:
 //Shunday function yozing, u numberlardan tashkil topgan array qabul qilsin va osha numberlar orasidagi tushib qolgan sonni topib uni return qilsin
-console.log("birinchi  usul bunda hamma tushib qogan sonni topadi:");
-function birinchi(a: any) {
-  a.sort();
-  const result = [];
+// console.log("birinchi  usul bunda hamma tushib qogan sonni topadi:");
+// function birinchi(a: any) {
+//   a.sort();
+//   const result = [];
 
-  for (let i = 1; i <= 9; i++) {
-    if (!a.includes(i)) {
-      result.push(i);
-    }
-  }
-  return result;
-}
+//   for (let i = 1; i <= 9; i++) {
+//     if (!a.includes(i)) {
+//       result.push(i);
+//     }
+//   }
+//   return result;
+// }
 
-console.log(birinchi([9, 7, 6, 3, 4, 0]));
-console.log("=============");
+// console.log(birinchi([9, 7, 6, 3, 4, 0]));
+// console.log("=============");
 
-console.log("ikkinchi usul bunda bitta tushib qogan sonni topadi:");
-function ikkinchi(a: any) {
-  for (let i = 1; i <= 9; i++) {
-    if (!a.includes(i)) {
-      return i;
-    }
-  }
-}
+// console.log("ikkinchi usul bunda bitta tushib qogan sonni topadi:");
+// function ikkinchi(a: any) {
+//   for (let i = 1; i <= 9; i++) {
+//     if (!a.includes(i)) {
+//       return i;
+//     }
+//   }
+// }
 
-console.log(ikkinchi([1, 2, 3, 4, 5, 7]));
+// console.log(ikkinchi([1, 2, 3, 4, 5, 7]));
 
 //TASK R:
 //Shunday function yozing, u string parametrga ega bo'lsin.
