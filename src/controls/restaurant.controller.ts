@@ -71,7 +71,7 @@ restaurantController.processLogin = async (
 ) => {
   try {
     console.log("Postprocess");
-    console.log("body:", req.body);
+
     const input: LoginInput = req.body,
       result = await memberService.processLogin(input);
 
@@ -88,21 +88,6 @@ restaurantController.processLogin = async (
     );
   }
 };
-restaurantController.checkAuthSession = async (
-  req: AdminRequest,
-  res: Response,
-) => {
-  try {
-    console.log("checkAuthSession");
-    console.log("body:", req.body);
-    if (req.session?.member)
-      res.send(`<script>alert(${req.session.member.memberNick})</script>`);
-    else res.send(`<script>alert(${Message.NOT_AUTHENTICATED})</script>`);
-  } catch (err) {
-    console.log("Error Postprocess:", err);
-    res.send(err);
-  }
-};
 restaurantController.logout = async (req: AdminRequest, res: Response) => {
   try {
     req.session.destroy(function () {
@@ -113,6 +98,41 @@ restaurantController.logout = async (req: AdminRequest, res: Response) => {
     res.send(err);
   }
 };
+restaurantController.getUsers = async (req: Request, res: Response) => {
+  try {
+    console.log("getUsers");
+    const result = await memberService.getUsers();
+    res.render("users", { users: result });
+  } catch (err) {
+    console.log("Error getUsers:", err);
+    res.redirect("/admin/login");
+  }
+};
+restaurantController.updateChosenusers = async (
+  req: Request,
+  res: Response,
+) => {
+  try {
+    console.log("updateChosenusers");
+  } catch (err) {
+    console.log("Error updateChosenusers:", err);
+  }
+};
+restaurantController.checkAuthSession = async (
+  req: AdminRequest,
+  res: Response,
+) => {
+  try {
+    console.log("checkAuthSession");
+    if (req.session?.member)
+      res.send(`<script>alert(${req.session.member.memberNick})</script>`);
+    else res.send(`<script>alert(${Message.NOT_AUTHENTICATED})</script>`);
+  } catch (err) {
+    console.log("Error Postprocess:", err);
+    res.send(err);
+  }
+};
+
 restaurantController.verifyRestaurant = (
   req: AdminRequest,
   res: Response,
