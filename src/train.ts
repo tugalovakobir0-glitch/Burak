@@ -1,14 +1,33 @@
+//MITASK-U:
+
+function getnumbers(number: number) {
+  let qiymat = 0;
+  let sonlaryigindisi = [];
+  for (let i = 0; i < number; i++) {
+    if (i % 2 !== 0) {
+      qiymat++;
+      sonlaryigindisi.push(i);
+    }
+  }
+  return {
+    sonlarmiqdori: qiymat,
+    toqsonlar: sonlaryigindisi,
+  };
+}
+
+console.log(getnumbers(10));
+
 //MITASK-T:
 //Shunday function tuzing, u sonlardan tashkil topgan 2'ta array qabul qilsin.
 //Va ikkala arraydagi sonlarni tartiblab bir arrayda qaytarsin.
 
-function arrayfunction(a: any, b: any) {
-  const result = a.concat(b);
-  const result1 = result.sort();
-  return result1;
-}
+// function arrayfunction(a: any, b: any) {
+//   const result = a.concat(b);
+//   const result1 = result.sort();
+//   return result1;
+// }
 
-console.log(arrayfunction([5, 3, 4, 2, 1, 0], [9, 7, 6, 8]));
+// console.log(arrayfunction([5, 3, 4, 2, 1, 0], [9, 7, 6, 8]));
 
 //MITASK- S:
 //Shunday function yozing, u numberlardan tashkil topgan array qabul qilsin va osha numberlar orasidagi tushib qolgan sonni topib uni return qilsin
