@@ -1,21 +1,21 @@
 //MITASK-U:
 
-function getnumbers(number: number) {
-  let qiymat = 0;
-  let sonlaryigindisi = [];
-  for (let i = 0; i < number; i++) {
-    if (i % 2 !== 0) {
-      qiymat++;
-      sonlaryigindisi.push(i);
-    }
-  }
-  return {
-    sonlarmiqdori: qiymat,
-    toqsonlar: sonlaryigindisi,
-  };
-}
+// function getnumbers(number: number) {
+//   let qiymat = 0;
+//   let sonlaryigindisi = [];
+//   for (let i = 0; i < number; i++) {
+//     if (i % 2 !== 0) {
+//       qiymat++;
+//       sonlaryigindisi.push(i);
+//     }
+//   }
+//   return {
+//     sonlarmiqdori: qiymat,
+//     toqsonlar: sonlaryigindisi,
+//   };
+// }
 
-console.log(getnumbers(10));
+// console.log(getnumbers(10));
 
 //MITASK-T:
 //Shunday function tuzing, u sonlardan tashkil topgan 2'ta array qabul qilsin.

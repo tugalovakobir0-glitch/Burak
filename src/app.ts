@@ -16,7 +16,7 @@ const store = new MongoDbStore({
 
 /** 1- ENTRANCE- kirish qismi **/
 const app = express();
-app.use(express.static(path.join(__dirname, "public")));
+app.use(express.static(path.join(__dirname, "public"))); //Bu publicni tash qi muhitga ochiqlaydi
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(morgan(MORGAN_FORMAT));
@@ -26,7 +26,7 @@ app.use(
   session({
     secret: String(process.env.SESSION_SECRET),
     cookie: {
-      maxAge: 1000 * 3600 * 24 * 3, // 3h
+      maxAge: 1000 * 3600 * 24 * 6, // 6h
     },
     store: store,
 
