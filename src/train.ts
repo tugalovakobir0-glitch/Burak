@@ -1,3 +1,24 @@
+//MITASK-V:
+
+function countChars(string) {
+  const result = {};
+  const letters = string.split("");
+
+  letters.forEach((char) => {
+    if (result[char]) {
+      result[char] += 1;
+    } else {
+      result[char] = 1;
+    }
+  });
+
+  return result;
+}
+
+console.log(countChars("salom"));
+console.log(countChars("hello"));
+console.log(countChars("banana"));
+
 //MITASK-U:
 
 // function getnumbers(number: number) {
