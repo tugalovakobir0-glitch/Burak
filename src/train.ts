@@ -1,23 +1,35 @@
-//MITASK-V:
-
-function countChars(string) {
-  const result = {};
-  const letters = string.split("");
-
-  letters.forEach((char) => {
-    if (result[char]) {
-      result[char] += 1;
-    } else {
-      result[char] = 1;
-    }
-  });
-
+//MITASK- W:
+function countChars(arr: any, number: number) {
+  const result = [];
+  for (let i = 0; arr.length > i; i += number) {
+    const num1 = arr.slice(i, i + number);
+    result.push(num1);
+  }
   return result;
 }
 
-console.log(countChars("salom"));
-console.log(countChars("hello"));
-console.log(countChars("banana"));
+console.log(countChars([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 3));
+
+//MITASK-V:
+
+// function countChars(string) {
+//   const result = {};
+//   const letters = string.split("");
+
+//   letters.forEach((char) => {
+//     if (result[char]) {
+//       result[char] += 1;
+//     } else {
+//       result[char] = 1;
+//     }
+//   });
+
+//   return result;
+// }
+
+// console.log(countChars("salom"));
+// console.log(countChars("hello"));
+// console.log(countChars("banana"));
 
 //MITASK-U:
 
