@@ -1,14 +1,32 @@
-//MITASK- W:
-function countChars(arr: any, number: number) {
-  const result = [];
-  for (let i = 0; arr.length > i; i += number) {
-    const num1 = arr.slice(i, i + number);
-    result.push(num1);
+//MITASK-X:
+function countChars(object: any, string: string) {
+  let count = 0;
+  const result = Object.keys(object);
+  const result1 = Object.keys(object.car);
+
+  const key = [...result, ...result1];
+
+  for (let i = 0; key.length > i; i++) {
+    if (key[i] === string) {
+      count++;
+    }
   }
-  return result;
+  return count;
 }
 
-console.log(countChars([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 3));
+console.log(countChars({ name: "Alex", car: { name: "BMW" } }, "name"));
+
+//MITASK- W:
+// function countChars(arr: any, number: number) {
+//   const result = [];
+//   for (let i = 0; arr.length > i; i += number) {
+//     const num1 = arr.slice(i, i + number);
+//     result.push(num1);
+//   }
+//   return result;
+// }
+
+// console.log(countChars([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 3));
 
 //MITASK-V:
 
