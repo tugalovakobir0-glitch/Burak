@@ -1,20 +1,34 @@
-//MITASK-X:
-function countChars(object: any, string: string) {
-  let count = 0;
-  const result = Object.keys(object);
-  const result1 = Object.keys(object.car);
-
-  const key = [...result, ...result1];
-
-  for (let i = 0; key.length > i; i++) {
-    if (key[i] === string) {
-      count++;
+//MITASK-Y:
+function findIntersection(array, Array1: any) {
+  let count = [];
+  for (let i = 0; array.length > i; i++) {
+    if (Array1.includes(array[i])) {
+      count.push(array[i]);
     }
   }
+
   return count;
 }
 
-console.log(countChars({ name: "Alex", car: { name: "BMW" } }, "name"));
+console.log(findIntersection([1, 2, 3, 4], [4, 3, 2, 5, 7]));
+
+//MITASK-X:
+// function countChars(object: any, string: string) {
+//   let count = 0;
+//   const result = Object.keys(object);
+//   const result1 = Object.keys(object.car);
+
+//   const key = [...result, ...result1];
+
+//   for (let i = 0; key.length > i; i++) {
+//     if (key[i] === string) {
+//       count++;
+//     }
+//   }
+//   return count;
+// }
+
+// console.log(countChars({ name: "Alex", car: { name: "BMW" } }, "name"));
 
 //MITASK- W:
 // function countChars(arr: any, number: number) {
