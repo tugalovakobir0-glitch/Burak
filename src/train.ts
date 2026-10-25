@@ -1,16 +1,16 @@
-//MITASK-Y:
-function findIntersection(array, Array1: any) {
-  let count = [];
+//MITASK-Z:
+function findIntersection(array) {
+  let count = 0;
   for (let i = 0; array.length > i; i++) {
-    if (Array1.includes(array[i])) {
-      count.push(array[i]);
+    if (array[i] % 2 === 0) {
+      count += array[i];
     }
   }
 
   return count;
 }
 
-console.log(findIntersection([1, 2, 3, 4], [4, 3, 2, 5, 7]));
+console.log(findIntersection([1, 2, 3, 4]));
 
 //MITASK-X:
 // function countChars(object: any, string: string) {
