@@ -8,6 +8,7 @@ import { MORGAN_FORMAT } from "./libs/config";
 import session from "express-session";
 import ConnectMongoDBSession from "connect-mongodb-session";
 import { T } from "./libs/types/common";
+
 const MongoDbStore = ConnectMongoDBSession(session);
 const store = new MongoDbStore({
   uri: String(process.env.MONGO_URL),
@@ -17,11 +18,11 @@ const store = new MongoDbStore({
 /** 1- ENTRANCE- kirish qismi **/
 const app = express();
 app.use(express.static(path.join(__dirname, "public"))); //Bu publicni tash qi muhitga ochiqlaydi
-app.use(express.urlencoded({ extended: true }));
+app.use(express.urlencoded({ extended: true })); //MidelWeri external pacage
 app.use(express.json());
 app.use(morgan(MORGAN_FORMAT));
 
-/** SESSIONS- sekshinlar qismi **/
+/** 2-SESSIONS- sekshinlar qismi **/
 app.use(
   session({
     secret: String(process.env.SESSION_SECRET),
@@ -39,10 +40,10 @@ app.use(function (req, res, next) {
   res.locals.member = sessionInstance.member;
   next();
 });
-/** 2- VIEWS- viewlar  qismi **/
+/** 3- VIEWS- viewlar  qismi **/
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
-/** 1- ROUTERS- ruterlar qismi **/
+/** 4- ROUTERS- ruterlar qismi **/
 
 app.use("/admin", routerAdmin); //Bssr-Ejs
 app.use("/", router); //React
