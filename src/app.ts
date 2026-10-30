@@ -3,6 +3,7 @@ import path from "path";
 import router from "./router";
 import routerAdmin from "./routerAdmin";
 import morgan from "morgan";
+import cookieParser from "cookie-parser";
 import { MORGAN_FORMAT } from "./libs/config";
 
 import session from "express-session";
@@ -20,6 +21,7 @@ const app = express();
 app.use(express.static(path.join(__dirname, "public"))); //Bu publicni tash qi muhitga ochiqlaydi
 app.use(express.urlencoded({ extended: true })); //MidelWeri external pacage
 app.use(express.json());
+app.use(cookieParser());
 app.use(morgan(MORGAN_FORMAT));
 
 /** 2-SESSIONS- sekshinlar qismi **/
