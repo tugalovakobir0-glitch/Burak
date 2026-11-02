@@ -2,6 +2,7 @@ import express from "express";
 const router = express.Router();
 import memberController from "./controls/member.conteroller";
 import restaurantController from "./controls/restaurant.controller";
+import makeUploader from "./libs/utils/uploader";
 /* MEMBER */
 router.post("/member/signup", memberController.signup);
 router.post("/member/login", memberController.login);
@@ -14,6 +15,12 @@ router.get(
   "/member/detail",
   memberController.verifyAuth,
   memberController.getMemberDetail,
+);
+router.post(
+  "/member/update",
+  memberController.verifyAuth,
+  makeUploader("members").single("memberImage"),
+  memberController.updateMember,
 );
 /* PRODUCT */
 

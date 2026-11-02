@@ -19,6 +19,7 @@ const store = new MongoDbStore({
 /** 1- ENTRANCE- kirish qismi **/
 const app = express();
 app.use(express.static(path.join(__dirname, "public"))); //Bu publicni tash qi muhitga ochiqlaydi
+app.use("/uploads", express.static("./uploads"));
 app.use(express.urlencoded({ extended: true })); //MidelWeri external pacage
 app.use(express.json());
 app.use(cookieParser());
