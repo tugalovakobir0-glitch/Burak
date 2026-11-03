@@ -19,7 +19,7 @@ class MemberService {
   /**SPA */
   public async getRestaurant(): Promise<Member> {
     const result = await this.memberModel
-      .find({
+      .findOne({
         memberType: MemberType.RESTAURANT,
       })
       .lean()
