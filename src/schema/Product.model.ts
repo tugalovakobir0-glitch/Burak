@@ -1,6 +1,6 @@
 import mongoose, { Schema } from "mongoose";
 import {
-  ProductColliction,
+  ProductCollection,
   ProductSize,
   ProductStatus,
   ProductVolume,
@@ -15,7 +15,7 @@ const productSchema = new Schema(
     },
     productColliction: {
       type: String,
-      enum: ProductColliction,
+      enum: ProductCollection,
       required: true,
     },
     productName: {
