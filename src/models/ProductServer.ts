@@ -52,7 +52,7 @@ class ProductService {
     id: string,
   ): Promise<Product> {
     const productId = shapeIntoMongooseObjectId(id);
-    const result = await this.productModel
+    let result = await this.productModel
       .findOne({
         _id: productId,
         productStatus: ProductStatus.PROCESS,
@@ -72,7 +72,7 @@ class ProductService {
         // Insert View
         await this.viewService.insertMemberView(input);
         //Increase Counts
-        const result = await this.productModel
+        result = await this.productModel
           .findByIdAndUpdate(
             productId,
             {
